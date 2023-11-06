@@ -29,7 +29,6 @@ public class PeopleMessage {
     private String edited;
     private String url;
     private Boolean isActivePeople;
-
     private Planet planet;
 
 }

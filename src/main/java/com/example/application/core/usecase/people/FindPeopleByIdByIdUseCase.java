@@ -1,22 +1,17 @@
 package com.example.application.core.usecase.people;
 
+import com.example.adapters.out.people.FindPeopleByIdAdapter;
 import com.example.application.core.domain.people.People;
-import com.example.application.ports.in.people.FindPeopleByIdInputPort;
-import com.example.application.ports.out.people.FindPeopleByIdOutputPort;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
-public class FindPeopleByIdByIdUseCase implements FindPeopleByIdInputPort {
+@Service
+public class FindPeopleByIdByIdUseCase {
 
-    private final FindPeopleByIdOutputPort findPeopleByIdOutputPort;
-
-    public FindPeopleByIdByIdUseCase(
-            FindPeopleByIdOutputPort findPeopleByIdOutputPort
-    ) {
-        this.findPeopleByIdOutputPort = findPeopleByIdOutputPort;
-    }
-
-    @Override
+    @Autowired
+    private FindPeopleByIdAdapter FindPeopleByIdCodeClient;
     public People find(Integer peopleId) {
-        var planet = findPeopleByIdOutputPort.find(peopleId);
+        var planet = FindPeopleByIdCodeClient.find(peopleId);
         return planet;
     }
 
